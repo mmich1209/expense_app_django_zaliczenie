@@ -1,8 +1,8 @@
 from django.db import models
 
 # Create your models here.
-#model for saving up the expenses
 
+# Model for saving up the expense
 class Expense(models.Model):
     name = models.CharField(max_length=100)
     amount = models.PositiveIntegerField()

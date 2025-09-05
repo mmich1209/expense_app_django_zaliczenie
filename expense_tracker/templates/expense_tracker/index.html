@@ -1,11 +1,40 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
     <h1>This is main page</h1>
-    <form action="POST">
+
+
+    <form class="shadow-lg m-20 rounded-lg bg-gray-100" method="POST">
+
+
         {% csrf_token %}
-        {{ expense_form.as_p }}
+        <div class="form-container px-10 py-10 flex">
+            <div class="mx-10">
+                <div class="mb-5">
+                    <label>Expense Name</label>
+                </div>
+                <div class="border"> {{ expense_form.name }}</div>
+            </div>
+
+            <div class="mx-10">
+                <div class="mb-5">
+                    <label>Expense Amount</label>
+                </div>
+                <div class="border"> {{ expense_form.amount }}</div>
+            </div>
+
+            <div class="mx-10">
+                <div class="mb-5">
+                    <label>Expense Category</label>
+                </div>
+                <div class="border"> {{ expense_form.category }}</div>
+            </div>
+            <div class="mx-10 mt-8">
+                <button class="btn btn-soft btn-info">Add</button>
+            </div>
+        </div>
+
+
     </form>
 
 {% endblock %}

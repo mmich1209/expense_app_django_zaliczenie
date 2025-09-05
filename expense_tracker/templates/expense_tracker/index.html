@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-<h1>This is a template for Expense Tracker view</h1>
+    <h1>This is main page</h1>
+    <form action="POST">
+        {% csrf_token %}
+        {{ expense_form.as_p }}
+    </form>
+
 {% endblock %}

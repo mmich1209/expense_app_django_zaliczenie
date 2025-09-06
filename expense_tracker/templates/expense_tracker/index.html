@@ -33,8 +33,36 @@
                 <button class="btn btn-soft btn-info">Add</button>
             </div>
         </div>
-
-
     </form>
+
+    <div>Expenses</div>
+    <div class="shadow-lg m-20 rounded-lg bg-gray-100">
+        <div class="expense-header flex-wrap space-x-20">
+            <span class="text-2xl font-extrabold">Name</span>
+            <span class="text-2xl font-extrabold">Amount</span>
+            <span class="text-2xl font-extrabold">Category</span>
+            <span class="text-2xl font-extrabold">Date</span>
+            <span class="text-2xl font-extrabold">Edit</span>
+            <span class="text-2xl font-extrabold">Delete</span>
+        </div>
+        <hr class="h-0.5 bg-gray-200 rounded-sm dark:bg-gray-700 m-5">
+        {% for expense in expenses %}
+            <div class="expense-row flex px-10 py-4">
+                <span class="font-bold">{{ expense.name }}</span>
+                <span>{{ expense.amount }}</span>
+                <span>{{ expense.category }}</span>
+                <span>{{ expense.date }}</span>
+                <span><a href="">Edit</a></span>
+                <span><a href="">Delete</a></span>
+            </div>{% endfor %}
+    </div>
+
+
+
+
+
+
+
+
 
 {% endblock %}

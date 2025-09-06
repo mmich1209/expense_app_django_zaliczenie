@@ -10,6 +10,7 @@ def index(request):
         expense = ExpenseForm(request.POST)
         if expense.is_valid():
             expense.save()
-    expense_form = ExpenseForm()
-    return render(request, 'expense_tracker/index.html', {'expense_form': expense_form})
 
+    expenses = Expense.objects.all()
+    expense_form = ExpenseForm()
+    return render(request, 'expense_tracker/index.html', {'expense_form': expense_form, 'expenses': expenses})

@@ -51,7 +51,7 @@
         {% for expense in expenses %}
             <div class=" expense-row flex px-10 py-4 justify-center">
                 <span class="font-bold">{{ expense.name }}</span>
-                <span>{{ expense.amount }}</span>
+                <span>{{ expense.amount }} zł</span>
                 <span>{{ expense.category }}</span>
                 <span>{{ expense.date }}</span>
                 <span class="align-middle"><a class="flex justify-center" href="{% url 'edit' expense.id %}">
@@ -66,6 +66,10 @@
                     </form>
                 </span>
             </div>{% endfor %}
+    <!-- Displaying total-->
+    <div class="px-100 py-10">
+       <span class="font-bold text-lg">  Total: {{ total_expenses.amount__sum }}zł</span>
+    </div>
     </div>
 
 

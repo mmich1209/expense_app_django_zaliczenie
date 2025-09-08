@@ -17,7 +17,19 @@ def index(request):
 
 
 def delete(request, id):
-    if request.method == 'POST' and 'delete' in request.POST:  #checking if the POST request comes from delete button
+    if request.method == 'POST' and 'delete' in request.POST:  # checking if the POST request comes from delete button
         expense = Expense.objects.get(id=id)
         expense.delete()
     return redirect('index')
+
+
+def edit(request, id):
+    expense = Expense.objects.get(id=id)
+    expense_form = ExpenseForm(instance=expense)
+    if request.method == 'POST':
+        expense = Expense.objects.get(id=id)
+        form = ExpenseForm(request.POST, instance=expense)
+        if form.is_valid():
+            expense.save()
+            return redirect('index')
+    return render(request, 'expense_tracker/edit.html', {'expense_form': expense_form})

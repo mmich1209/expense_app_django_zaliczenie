@@ -37,7 +37,7 @@
 
     <div>Expenses</div>
     <div class="shadow-lg m-20 rounded-lg bg-gray-100">
-        <div class="expense-header flex-wrap space-x-20">
+        <div class="expense-header flex-wrap space-x-20 py-4 px-10">
             <span class="text-2xl font-extrabold">Name</span>
             <span class="text-2xl font-extrabold">Amount</span>
             <span class="text-2xl font-extrabold">Category</span>
@@ -52,7 +52,9 @@
                 <span>{{ expense.amount }}</span>
                 <span>{{ expense.category }}</span>
                 <span>{{ expense.date }}</span>
-                <span><a href="">Edit</a></span>
+                <span><a href="{% url 'edit' expense.id %}">
+                    <img class="h-6 w-6" src="{%  static 'images/edit.png' %}">
+                </a></span>
                 <span>
                     <form method="POST" action="{% url 'delete' expense.id %}">
                         {% csrf_token %}

@@ -57,7 +57,7 @@
                     <form method="POST" action="{% url 'delete' expense.id %}">
                         {% csrf_token %}
                         <button type="submit" name="delete">
-                            Delete
+                            <img class="h-6 w-6" src="{% static 'images/delete.png' %}">
                         </button>
                     </form>
                 </span>

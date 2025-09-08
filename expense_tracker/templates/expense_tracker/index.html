@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <h1>This is main page</h1>
+
+    <div class="ml-20 mr-20 mb-10 mt-10 font-bold text-3xl">Add expense ➕</div>
 
 
-    <form class="shadow-lg m-20 rounded-lg bg-gray-100" method="POST">
+    <form class="shadow-lg ml-20 mr-20 mb-20 mt-10 rounded-lg bg-gray-100" method="POST">
 
 
         {% csrf_token %}
@@ -35,8 +36,9 @@
         </div>
     </form>
 
-    <div>Expenses</div>
-    <div class="shadow-lg m-20 rounded-lg bg-gray-100">
+    <div class="ml-20 mr-20 mb-10 mt-10 font-bold text-3xl">Expenses 🪙</div>
+
+    <div class="shadow-lg  ml-20 mr-20 mb-10 mt-10 rounded-lg bg-gray-100">
         <div class="expense-header flex-wrap space-x-20 py-4 px-10">
             <span class="text-2xl font-extrabold">Name</span>
             <span class="text-2xl font-extrabold">Amount</span>
@@ -47,13 +49,13 @@
         </div>
         <hr class="h-0.5 bg-gray-200 rounded-sm dark:bg-gray-700 m-5">
         {% for expense in expenses %}
-            <div class="expense-row flex px-10 py-4">
+            <div class=" expense-row flex px-10 py-4 justify-center">
                 <span class="font-bold">{{ expense.name }}</span>
                 <span>{{ expense.amount }}</span>
                 <span>{{ expense.category }}</span>
                 <span>{{ expense.date }}</span>
-                <span><a href="{% url 'edit' expense.id %}">
-                    <img class="h-6 w-6" src="{%  static 'images/edit.png' %}">
+                <span class="align-middle"><a class="flex justify-center" href="{% url 'edit' expense.id %}">
+                    <img class="h-6 w-6" src="{% static 'images/edit.png' %}">
                 </a></span>
                 <span>
                     <form method="POST" action="{% url 'delete' expense.id %}">

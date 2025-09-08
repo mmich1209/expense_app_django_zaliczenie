@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="{% static 'dist/table_style.css' %}">
 </head>
 <body class="bg-white text-gray-900 min-h-screen">
+<div class="navbar bg-gray-100 shadow-lg flex flex-wrap justify-center items-center mx-auto">
+    <a href="#" class="flex">
+        <img class="h-15 w-15 mr-5" src="{% static 'images/wallet_logo2.png' %}">
+        <span class="self-center text-xl font-extrabold">Expense Tracker App</span>
+    </a>
+
+</div>
 {% block content %}
 {% endblock %}
 </body>

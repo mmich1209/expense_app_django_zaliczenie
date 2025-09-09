@@ -31,6 +31,9 @@ def index(request):
     one_week_data = Expense.objects.filter(date__gt=last_week)
     weekly_sum = one_week_data.aggregate(Sum('amount'))
 
+    #calculating categorical expenses
+    categorical_sums = Expense.objects.filter().values('category').order_by('category').annotate(sum=Sum('amount'))
+
     expense_form = ExpenseForm()
     return render(request, 'expense_tracker/index.html',
                   {'expense_form': expense_form,
@@ -38,7 +41,8 @@ def index(request):
                    'total_expenses': total_expenses,
                    'yearly_sum': yearly_sum,
                    'monthly_sum': monthly_sum,
-                   'weekly_sum' : weekly_sum                   })
+                   'weekly_sum' : weekly_sum,
+                   'categorical_sums': categorical_sums})
 
 
 def delete(request, id):

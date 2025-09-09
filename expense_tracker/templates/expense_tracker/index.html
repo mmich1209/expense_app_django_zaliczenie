@@ -73,20 +73,47 @@
     </div>
 
 
-    <<div class="flex justify-evenly w-full px-4 mb-10">
+
+    <div class="flex justify-evenly w-full px-4 mb-10">
         <div class="w-full shadow-lg ml-20 rounded-lg bg-gray-100">
             <h1 class="py-10 ml-10 font-bold text-2xl"> LAST 365 DAYS:</h1>
-            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ yearly_sum.amount__sum }} zł</p>
+            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ yearly_sum.amount__sum }}
+                zł</p>
         </div>
         <div class="w-full shadow-lg ml-10 rounded-lg bg-gray-100">
             <h1 class="py-10 ml-10 font-bold text-2xl"> LAST 30 DAYS:</h1>
-            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ monthly_sum.amount__sum }} zł</p>
+            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ monthly_sum.amount__sum }}
+                zł</p>
         </div>
         <div class="w-full shadow-lg ml-10 mr-20 rounded-lg bg-gray-100">
             <h1 class="py-10 ml-10 font-bold text-2xl"> LAST 7 DAYS:</h1>
-            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ weekly_sum.amount__sum }} zł</p>
+            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ weekly_sum.amount__sum }}
+                zł</p>
         </div>
     </div>
+
+
+    <div class="flex justify-evenly w-full px-2 mb-10">
+        <div class="w-full shadow-lg ml-20 mr-20 rounded-lg bg-gray-100">
+            <h1 class="py-10 ml-10 font-bold text-2xl"> Categorical Expenses</h1>
+            <hr>
+            <span name="prawa" class="w-full shadow-lg ml-10 rounded-lg bg-gray-100">
+            {%  for categorical_sum in categorical_sums %}
+                <div class="flex-wrap w-full px-4 py-4">
+                    <span class="ml-10 font-bold ">
+                        {{ categorical_sum.category }}
+                    </span>
+                    </div>
+                <div class='mb-10'>
+                      <span class="ml-10 py-4">
+                         {{ categorical_sum.sum }}
+                       </span>
+                </div>
+            {%  endfor %}
+            </span>
+        </div>
+    </div>
+
 
 
 

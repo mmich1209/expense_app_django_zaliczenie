@@ -35,10 +35,10 @@ def index(request):
     return render(request, 'expense_tracker/index.html',
                   {'expense_form': expense_form,
                    'expenses': expenses,
+                   'total_expenses': total_expenses,
                    'yearly_sum': yearly_sum,
                    'monthly_sum': monthly_sum,
-                   'weekly_sum': weekly_sum
-                   })
+                   'weekly_sum' : weekly_sum                   })
 
 
 def delete(request, id):

@@ -15,3 +15,8 @@ div.expense-header span, div.expense-row span{
 @layer base {
   :root, html, body { background-color: #fff !important; }
 }
+
+
+.custom-green {
+  color: #22c55e !important; /* Tailwind's green-500 */
+}

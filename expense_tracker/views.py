@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Expense
 from .forms import ExpenseForm
 from django.db.models import Sum
+import datetime
 
 
 # Create your views here.
@@ -15,8 +16,29 @@ def index(request):
     expenses = Expense.objects.all()
     total_expenses = expenses.aggregate(Sum('amount'))
 
+    # calculating 365 days expenses
+    last_year = datetime.date.today() - datetime.timedelta(days=365)
+    one_year_data = Expense.objects.filter(date__gt=last_year)
+    yearly_sum = one_year_data.aggregate(Sum('amount'))
+
+    # calculating 30 days expenses
+    last_month = datetime.date.today() - datetime.timedelta(days=30)
+    one_month_data = Expense.objects.filter(date__gt=last_month)
+    monthly_sum = one_month_data.aggregate(Sum('amount'))
+
+    # calculating last week expenses
+    last_week = datetime.date.today() - datetime.timedelta(days=7)
+    one_week_data = Expense.objects.filter(date__gt=last_week)
+    weekly_sum = one_week_data.aggregate(Sum('amount'))
+
     expense_form = ExpenseForm()
-    return render(request, 'expense_tracker/index.html', {'expense_form': expense_form, 'expenses': expenses, 'total_expenses': total_expenses})
+    return render(request, 'expense_tracker/index.html',
+                  {'expense_form': expense_form,
+                   'expenses': expenses,
+                   'yearly_sum': yearly_sum,
+                   'monthly_sum': monthly_sum,
+                   'weekly_sum': weekly_sum
+                   })
 
 
 def delete(request, id):

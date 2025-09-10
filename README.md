@@ -1,6 +1,14 @@
 # expense_app_django_zaliczenie
 Projekt na zaliczenie. Lokalna webowa aplikacja do zapisywania wydatków.
 
+## Opis funkcji:
+
+- dodawanie wydatków,
+- sumy dzienne, miesięczne, roczne,
+- grupowanie po kategoriach,
+- prosty interfejs webowy z formularzem i tabelą.
+
+## Instalacja
 Zainstaluj zależności
 `pip install -r requirements.txt`
 
@@ -16,3 +24,5 @@ Uruchom aplikację
 
 Aplikacja będzie dostepna localhost:8000
 
+
+![Podgląd aplikacji](docs/screenshot.jpg)

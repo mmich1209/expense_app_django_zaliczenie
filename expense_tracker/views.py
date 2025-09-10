@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Expense
 from .forms import ExpenseForm
 from django.db.models import Sum
+from django.db.models.functions import TruncDate
 import datetime
 
 
@@ -35,7 +36,7 @@ def index(request):
     categorical_sums = Expense.objects.filter().values('category').order_by('category').annotate(sum=Sum('amount'))
 
     # calculating daily expenses
-    daily_sums = Expense.objects.filter().values('date').order_by('date').annotate(sum=Sum('amount'))
+    daily_sums = Expense.objects.annotate(day=TruncDate('date')).values('day').annotate(sum=Sum('amount')).order_by('day')
 
 
     expense_form = ExpenseForm()

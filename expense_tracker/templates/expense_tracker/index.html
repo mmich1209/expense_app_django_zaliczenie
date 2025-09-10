@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-    <div class="ml-20 mr-20 mb-10 mt-10 font-bold text-3xl">Add expense ➕</div>
+    <div class="ml-20 mr-20 mb-10 mt-10 font-bold text-2xl">Dodaj wydatek ➕</div>
 
 
     <form class="shadow-lg ml-20 mr-20 mb-20 mt-10 rounded-lg bg-gray-100" method="POST">
@@ -11,43 +11,43 @@
         {% csrf_token %}
         <div class="form-container px-10 py-10 flex">
             <div class="mx-10">
-                <div class="mb-5">
-                    <label>Expense Name</label>
+                <div class="mb-5 font-bold">
+                    <label>Nazwa</label>
                 </div>
                 <div class="border"> {{ expense_form.name }}</div>
             </div>
 
             <div class="mx-10">
-                <div class="mb-5">
-                    <label>Expense Amount</label>
+                <div class="mb-5 font-bold">
+                    <label>Kwota</label>
                 </div>
                 <div class="border"> {{ expense_form.amount }}</div>
             </div>
 
             <div class="mx-10">
-                <div class="mb-5">
-                    <label>Expense Category</label>
+                <div class="mb-5 font-bold">
+                    <label>Kategoria</label>
                 </div>
                 <div class="border"> {{ expense_form.category }}</div>
             </div>
             <div class="mx-10 mt-8">
-                <button class="btn btn-soft btn-info">Add</button>
+                <button class="btn btn-soft btn-info">Dodaj</button>
             </div>
         </div>
     </form>
 
-    <div class="ml-20 mr-20 mb-10 mt-10 font-bold text-3xl">Expenses 🪙</div>
+    <div class="ml-20 mr-20 mb-10 mt-10 font-bold text-2xl">Wydatki 🪙</div>
 
     <div class="shadow-lg  ml-20 mr-20 mb-10 mt-10 rounded-lg bg-gray-100">
         <div class="expense-header flex-wrap space-x-20 py-4 px-10">
-            <span class="text-2xl font-extrabold">Name</span>
-            <span class="text-2xl font-extrabold">Amount</span>
-            <span class="text-2xl font-extrabold">Category</span>
-            <span class="text-2xl font-extrabold">Date</span>
-            <span class="text-2xl font-extrabold">Edit</span>
-            <span class="text-2xl font-extrabold">Delete</span>
+            <span class="text-2xl font-bold">Nazwa</span>
+            <span class="text-2xl font-bold">Kwota</span>
+            <span class="text-2xl font-bold">Kategoria</span>
+            <span class="text-2xl font-bold">Data</span>
+            <span class="text-2xl font-bold">Edytuj</span>
+            <span class="text-2xl font-bold">Usuń</span>
         </div>
-        <hr class="h-0.5 bg-gray-200 rounded-sm dark:bg-gray-700 m-5">
+        <hr class="h-0.1" style="color: #4b7088">
         {% for expense in expenses %}
             <div class=" expense-row flex px-10 py-4 justify-center">
                 <span class="font-bold">{{ expense.name }}</span>
@@ -76,17 +76,17 @@
 
     <div class="flex justify-evenly w-full px-4 mb-10">
         <div class="w-full shadow-lg ml-20 rounded-lg bg-gray-100">
-            <h1 class="py-10 ml-10 font-bold text-2xl"> LAST 365 DAYS:</h1>
+            <h1 class="py-10 ml-10 font-bold text-2xl"> Ostatnie 365 dni:</h1>
             <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ yearly_sum.amount__sum }}
                 zł</p>
         </div>
         <div class="w-full shadow-lg ml-10 rounded-lg bg-gray-100">
-            <h1 class="py-10 ml-10 font-bold text-2xl"> LAST 30 DAYS:</h1>
+            <h1 class="py-10 ml-10 font-bold text-2xl"> Ostatnie 30 dni:</h1>
             <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ monthly_sum.amount__sum }}
                 zł</p>
         </div>
         <div class="w-full shadow-lg ml-10 mr-20 rounded-lg bg-gray-100">
-            <h1 class="py-10 ml-10 font-bold text-2xl"> LAST 7 DAYS:</h1>
+            <h1 class="py-10 ml-10 font-bold text-2xl"> Ostatnie 7 dni:</h1>
             <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ weekly_sum.amount__sum }}
                 zł</p>
         </div>
@@ -95,8 +95,8 @@
 
     <div class="flex justify-evenly w-full px-2 mb-10">
         <div class="w-full shadow-lg ml-20 mr-10 rounded-lg bg-gray-100">
-            <h1 class="py-10 ml-10 font-bold text-2xl"> Categorical Expenses</h1>
-            <hr>
+            <h1 class="py-4 ml-10 font-bold text-2xl""> Wydatki według kategorii</h1>
+            <hr class="h-0.1" style="color: #4b7088">
             <span class="w-full shadow-lg ml-10 rounded-lg bg-gray-100">
             {%  for categorical_sum in categorical_sums %}
                 <div class="flex-wrap w-full px-4 py-4">
@@ -113,13 +113,13 @@
             </span>
         </div>
          <div class="w-full shadow-lg ml-10 mr-20 rounded-lg bg-gray-100">
-            <h1 class="py-10 ml-10 font-bold text-2xl"> Weekly expenses</h1>
-            <hr>
+            <h1 class="py-4  ml-10 font-bold text-2xl"> Wydatki według dni</h1>
+            <hr class="h-0.1" style="color: #4b7088">
             <span class="w-full shadow-lg ml-10 rounded-lg bg-gray-100">
             {%  for daily_sum in daily_sums %}
                 <div class="flex-wrap w-full px-4 py-4">
                     <span class="ml-10 font-bold " >
-                        {{ daily_sum.date }}
+                        {{ daily_sum.day }}
                     </span>
                     </div>
                 <div class='mb-10'>

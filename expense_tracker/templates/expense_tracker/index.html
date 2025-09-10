@@ -68,7 +68,7 @@
             </div>{% endfor %}
         <!-- Displaying total-->
         <div class="px-100 py-10">
-            <span class="font-bold text-lg" style="color: #22c55e !important">  Total: {{ total_expenses.amount__sum }} zł</span>
+            <span class="font-bold text-lg" style="color: #22c55e !important">  Total: {{ total_expenses.amount__sum|floatformat:2 }} zł</span>
         </div>
     </div>
 
@@ -77,17 +77,17 @@
     <div class="flex justify-evenly w-full px-4 mb-10">
         <div class="w-full shadow-lg ml-20 rounded-lg bg-gray-100">
             <h1 class="py-10 ml-10 font-bold text-2xl"> Ostatnie 365 dni:</h1>
-            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ yearly_sum.amount__sum }}
+            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ yearly_sum.amount__sum|floatformat:2 }}
                 zł</p>
         </div>
         <div class="w-full shadow-lg ml-10 rounded-lg bg-gray-100">
             <h1 class="py-10 ml-10 font-bold text-2xl"> Ostatnie 30 dni:</h1>
-            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ monthly_sum.amount__sum }}
+            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ monthly_sum.amount__sum|floatformat:2 }}
                 zł</p>
         </div>
         <div class="w-full shadow-lg ml-10 mr-20 rounded-lg bg-gray-100">
             <h1 class="py-10 ml-10 font-bold text-2xl"> Ostatnie 7 dni:</h1>
-            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ weekly_sum.amount__sum }}
+            <p class="ml-10 font-bold text-lg mb-5" style="color: #22c55e !important"> {{ weekly_sum.amount__sum|floatformat:2 }}
                 zł</p>
         </div>
     </div>
@@ -106,7 +106,7 @@
                     </div>
                 <div class='mb-10'>
                       <span class="ml-10 py-4">
-                         {{ categorical_sum.sum }}
+                         {{ categorical_sum.sum|floatformat:2 }}
                        </span>
                 </div>
             {%  endfor %}
@@ -124,7 +124,7 @@
                     </div>
                 <div class='mb-10'>
                       <span class="ml-10 py-4 font-bold" style="color: #22c55e !important">
-                         {{ daily_sum.sum }} zł
+                         {{ daily_sum.sum|floatformat:2 }} zł
                        </span>
                 </div>
             {%  endfor %}
